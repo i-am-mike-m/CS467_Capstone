@@ -7,6 +7,9 @@ TagManager:
   - Trap Section
   - NPC
   - Ground
+  - Floor Trap
+  - Floor Trap PLUG
+  - Abuse Canvas
   layers:
   - Default
   - TransparentFX
