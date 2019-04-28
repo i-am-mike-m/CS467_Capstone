@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System;
 
-public class SpikeFallBehavior: MonoBehaviour
+public class SpikeFallBehavior : MonoBehaviour
 {
     private GameObject[] spikeTrapPieces;
     private Vector3 distanceToPlayer;
