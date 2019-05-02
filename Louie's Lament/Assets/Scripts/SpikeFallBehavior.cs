@@ -4,6 +4,7 @@ using System;
 public class SpikeFallBehavior : MonoBehaviour
 {
     private GameObject[] spikeTrapPieces;
+    private GameObject topSidePhysicalLayer;
     private Vector3 distanceToPlayer;
     private Vector3 originalLocation;
     private GameObject playerObject;
@@ -30,15 +31,18 @@ public class SpikeFallBehavior : MonoBehaviour
         {
             Physics2D.IgnoreCollision(gameObject.GetComponent<BoxCollider2D>(), obj.GetComponent<BoxCollider2D>());
         }
+
+        topSidePhysicalLayer = GameObject.Find("Top Side Physical Layer");
+        Physics2D.IgnoreCollision(gameObject.GetComponent<BoxCollider2D>(), topSidePhysicalLayer.GetComponent<BoxCollider2D>());
     }
 
     private void Update()
     {
         distanceToPlayer = getDistanceToPlayer();
 
-        if (distanceToPlayer.x < 3)
+        if (distanceToPlayer.x < 2.5)
         {
-            spikeBody.gravityScale = 2.0f;
+            spikeBody.gravityScale = 2.75f;
         }
     }
 

@@ -45,20 +45,19 @@ public class ElevatorMovement : MonoBehaviour
         float left = elevatorBoundingBox.bounds.center.x - (elevatorBoundingBox.size.x / 2);
         float right = elevatorBoundingBox.bounds.center.x + (elevatorBoundingBox.size.x / 2);
         float top = elevatorBoundingBox.bounds.center.y + (elevatorBoundingBox.size.y / 2);
-       // float bottom = elevatorBoundingBox.bounds.center.y - (elevatorBoundingBox.size.y / 2);
 
         if (player.transform.position.x > left && player.transform.position.x < right)
         {
             if (player.transform.position.y > gameObject.transform.position.y && top < maxHeight)
             {
-                gameObject.transform.Translate(Vector3.up * Time.deltaTime);
+                gameObject.transform.Translate(Vector3.up * 2 * Time.deltaTime);
             }
         }
         else
         {
             if (top > minHeight)
             {
-                gameObject.transform.Translate(Vector3.down * Time.deltaTime);
+                gameObject.transform.Translate(Vector3.down * 2 * Time.deltaTime);
             }
         }
     }
