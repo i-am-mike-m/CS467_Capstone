@@ -44,6 +44,14 @@ public class Player : MonoBehaviour
    
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.collider.gameObject.tag == "Trap Section")
+        {
+            PlayerDeath();
+        }
+    }
+
     public void PlayerDeath()
     {
         gameState.PlayerDeath();

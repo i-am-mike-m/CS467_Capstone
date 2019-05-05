@@ -16,8 +16,9 @@ public class AbusiveNPC : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        System.Random random = new System.Random();
-        int randomSprite = random.Next(3);
+        //System.Random random = new System.Random();
+        //int randomSprite = random.Next(3);
+        int randomSprite = 0;
 
         switch (randomSprite)
         {
