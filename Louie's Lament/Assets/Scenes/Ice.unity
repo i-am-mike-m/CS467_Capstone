@@ -190,7 +190,7 @@ PrefabInstance:
     - target: {fileID: 5828757109294877303, guid: fc01de5c38b85e345b02c07b9d1161dc,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -2.78
+      value: -2.36
       objectReference: {fileID: 0}
     - target: {fileID: 5828757109294877303, guid: fc01de5c38b85e345b02c07b9d1161dc,
         type: 3}
@@ -775,11 +775,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 795855483}
     m_Modifications:
-    - target: {fileID: 1378403866824421606, guid: 96fd3a3f51112a244860e707a26efdb7,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7957773189078321106, guid: 96fd3a3f51112a244860e707a26efdb7,
         type: 3}
       propertyPath: m_Name
@@ -789,6 +784,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: Trap Section
+      objectReference: {fileID: 0}
+    - target: {fileID: 1378403866824421606, guid: 96fd3a3f51112a244860e707a26efdb7,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7957773189078321109, guid: 96fd3a3f51112a244860e707a26efdb7,
         type: 3}
