@@ -44,41 +44,20 @@ public class Player : MonoBehaviour
    
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // Debug.Log(collision.otherCollider.gameObject.name.ToString());
+        // Debug.Log(collision.collider.gameObject.name.ToString());
+
+        if (collision.collider.gameObject.tag == "Trap Section")
+        {
+            PlayerDeath();
+        }
+    }
+
     public void PlayerDeath()
     {
         gameState.PlayerDeath();
         Destroy(gameObject);
-        
-        //ParticleSystem deathStars = Instantiate(deathVFX, gameObject.transform.position, Quaternion.identity) as ParticleSystem;
-        //AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position, deathSFXVolume);
-        //FindObjectOfType<SceneLoader>().LoadGameOver();
-    }
-
-    /*
-    private void Fire()
-    {
-        if (Input.GetButtonDown("Fire1"))
-        {
-            constantFireCoroutine = StartCoroutine(ConstantFire());
-        }
-        if (Input.GetButtonUp("Fire1"))
-        {
-            StopCoroutine(constantFireCoroutine);
-        }
-    }
-
-    IEnumerator ConstantFire()
-    {
-        while (true)
-        {
-            Vector2 laserStartPoint = new Vector2(transform.position.x, transform.position.y + 1f);
-            AudioSource.PlayClipAtPoint(fireSFX, Camera.main.transform.position, fireSFXVolume);
-            // Quaternion.identity is the rotation argument and means to use the current existing rotation
-            GameObject laser = Instantiate(basicBlueLaserPrefab, laserStartPoint, Quaternion.identity) as GameObject;            
-            laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, laserSpeed);
-
-            yield return new WaitForSeconds(rateOfFire);
-        }
-    }   
-    */    
+    }  
 }

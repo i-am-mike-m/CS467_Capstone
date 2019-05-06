@@ -6,6 +6,7 @@ public class FloorDrop : MonoBehaviour
 {
     Rigidbody2D floorBody;
     private GameObject[] groundPieces;
+    private GameObject[] trapSections;
 
     // Start is called before the first frame update
     void Start()
@@ -21,7 +22,19 @@ public class FloorDrop : MonoBehaviour
         groundPieces = GameObject.FindGameObjectsWithTag("Ground");
         foreach (GameObject obj in groundPieces)
         {
-            Physics2D.IgnoreCollision(gameObject.GetComponent<BoxCollider2D>(), obj.GetComponent<BoxCollider2D>());
+            if (obj.GetComponent<BoxCollider2D>() != null)
+            {
+                Physics2D.IgnoreCollision(gameObject.GetComponent<BoxCollider2D>(), obj.GetComponent<BoxCollider2D>());
+            }
+        }
+
+        trapSections = GameObject.FindGameObjectsWithTag("Trap Section");
+        foreach (GameObject obj in trapSections)
+        {
+            if (obj.GetComponent<BoxCollider2D>() != null)
+            {
+                Physics2D.IgnoreCollision(gameObject.GetComponent<BoxCollider2D>(), obj.GetComponent<BoxCollider2D>());
+            }
         }
     }
 

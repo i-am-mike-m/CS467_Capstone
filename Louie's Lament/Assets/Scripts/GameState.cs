@@ -40,7 +40,7 @@ public class GameState : MonoBehaviour
             startingLives++;
             /* TEMP */
             Debug.Log("Ran Out Of Lives");
-            //FindObjectOfType<SceneLoader>().LoadGameOver();            
+            FindObjectOfType<SceneLoader>().LoadGameOver();            
         }
         else {
             FindObjectOfType<SceneLoader>().ReloadScene();
