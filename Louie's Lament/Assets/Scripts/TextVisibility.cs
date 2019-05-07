@@ -2,46 +2,48 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FloorDropWhenUnder : MonoBehaviour
+public class TextVisibility : MonoBehaviour
 {
+    public float distanceToDisplay;
     private GameObject playerObject;
     private GameObject player;
     private BoxCollider2D floorArea;
     private Vector3 distanceToPlayer;
-    Rigidbody2D floorBody;
-    private GameObject[] groundPieces;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        floorBody = gameObject.GetComponent<Rigidbody2D>();
-        floorBody.gravityScale = 0.0f;
-
-        avoidTrapCollisions();
-
         player = GameObject.FindGameObjectWithTag("Player");
         floorArea = gameObject.GetComponent<BoxCollider2D>();
-    }
+        gameObject.GetComponent<Renderer>().enabled = false;
 
-    private void avoidTrapCollisions()
-    {
-        groundPieces = GameObject.FindGameObjectsWithTag("Ground");
-        foreach (GameObject obj in groundPieces)
-        {
-            Physics2D.IgnoreCollision(gameObject.GetComponent<BoxCollider2D>(), obj.GetComponent<BoxCollider2D>());
-        }
     }
 
     // Update is called once per frame
-    private void Update()
+    //original show/hide from https://answers.unity.com/questions/14165/show-and-hide-a-prefab-or-gameobject.html
+    void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            // show
+            // renderer.enabled = true;
+            gameObject.GetComponent<Renderer>().enabled = true;
+        }
+
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            // hide
+            // renderer.enabled = false;
+            gameObject.GetComponent<Renderer>().enabled = false;
+        }
 
         distanceToPlayer = getDistanceToPlayer();
 
-        if (distanceToPlayer.x < 2.0)
+        if (distanceToPlayer.x < distanceToDisplay)
         {
-            floorBody.bodyType = RigidbodyType2D.Dynamic;
-            floorBody.gravityScale = 2.0f;
+            gameObject.GetComponent<Renderer>().enabled = true;
+
         }
     }
 
@@ -53,4 +55,3 @@ public class FloorDropWhenUnder : MonoBehaviour
         return gameObject.transform.position - playerObject.transform.position;
     }
 }
-

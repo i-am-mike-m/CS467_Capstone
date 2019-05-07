@@ -491,7 +491,7 @@ GameObject:
   - component: {fileID: 7957773189078321109}
   - component: {fileID: 7957773189078321111}
   - component: {fileID: 7957773189078321110}
-  - component: {fileID: 7957773189078321108}
+  - component: {fileID: -8114285387267067239}
   m_Layer: 9
   m_Name: Ice Floor Fall Trap
   m_TagString: Floor Trap
@@ -574,7 +574,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3, y: 2.9381802}
   m_EdgeRadius: 0
---- !u!114 &7957773189078321108
+--- !u!114 &-8114285387267067239
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -583,7 +583,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7957773189078321106}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0509d5b7659d81848b0d7ad6445cc380, type: 3}
+  m_Script: {fileID: 11500000, guid: 164e97bad893267439a5b000b3bf7881, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7957773189850328220
