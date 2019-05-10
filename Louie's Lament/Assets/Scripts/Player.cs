@@ -7,16 +7,8 @@ public class Player : MonoBehaviour
 {   
     [SerializeField] GameState gameState;
 
-    /*
-    [Header("Projectile")]
-    [SerializeField] GameObject basicBlueLaserPrefab;
-    [SerializeField] float laserSpeed = 5f;
-    [SerializeField] float rateOfFire = 0.1f;
-    */
-    /*
-    [Header("Resources")]
-    [SerializeField] float health = 500;
-    */
+    bool isAlive = true;
+
     /*
     [Header("SFX/VFX")]
     [SerializeField] ParticleSystem deathVFX;
@@ -25,13 +17,11 @@ public class Player : MonoBehaviour
     [SerializeField] AudioClip fireSFX;
     [SerializeField] [Range(0f, 1f)] float fireSFXVolume = 0.05f;
     */
-    
-    Coroutine constantFireCoroutine;
-                
+
     // Start is called before the first frame update
     void Start()
     {
-        //gameState = FindObjectOfType<GameState>();        
+        gameState = FindObjectOfType<GameState>();        
     }
         
     void Update()
@@ -46,39 +36,26 @@ public class Player : MonoBehaviour
 
     public void PlayerDeath()
     {
-        gameState.PlayerDeath();
-        Destroy(gameObject);
+        if (isAlive)
+        {
+            isAlive = false;
+            StartCoroutine(Die());
+        }
         
         //ParticleSystem deathStars = Instantiate(deathVFX, gameObject.transform.position, Quaternion.identity) as ParticleSystem;
         //AudioSource.PlayClipAtPoint(deathSFX, Camera.main.transform.position, deathSFXVolume);
         //FindObjectOfType<SceneLoader>().LoadGameOver();
     }
-
-    /*
-    private void Fire()
+    
+    IEnumerator Die()
     {
-        if (Input.GetButtonDown("Fire1"))
-        {
-            constantFireCoroutine = StartCoroutine(ConstantFire());
-        }
-        if (Input.GetButtonUp("Fire1"))
-        {
-            StopCoroutine(constantFireCoroutine);
-        }
+        Collider2D[] playerColliders = GetComponents<Collider2D>();
+        for (int i = 0; i < playerColliders.Length; i++) {
+            playerColliders[i].enabled = false;            
+        }        
+
+        gameState.PlayerDeath();
+        yield return new WaitForSeconds(3);
+        Destroy(gameObject);
     }
-
-    IEnumerator ConstantFire()
-    {
-        while (true)
-        {
-            Vector2 laserStartPoint = new Vector2(transform.position.x, transform.position.y + 1f);
-            AudioSource.PlayClipAtPoint(fireSFX, Camera.main.transform.position, fireSFXVolume);
-            // Quaternion.identity is the rotation argument and means to use the current existing rotation
-            GameObject laser = Instantiate(basicBlueLaserPrefab, laserStartPoint, Quaternion.identity) as GameObject;            
-            laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, laserSpeed);
-
-            yield return new WaitForSeconds(rateOfFire);
-        }
-    }   
-    */    
 }

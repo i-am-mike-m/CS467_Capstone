@@ -6,14 +6,18 @@ using TMPro;
 
 public class GameState : MonoBehaviour
 {
-    // Player Info
-    [SerializeField] private int startingLives = 3;
-    [SerializeField] private int lives = 3;
+    [Header("Player Info")]
+    [SerializeField] private int startingLives = 5;
+    [SerializeField] private int lives = 5;
 
-    // Performance Info
-    float playthroughTime = 0;
+    [Header("Time Info")]
+    [SerializeField] private float playthroughTime = 0;     // Serialized to view in inspector
+    [SerializeField] private float levelTime = 0;           // Serialized to view in inspector
 
-    // Game Control    
+    [Header("Settings")]
+    [SerializeField] private float volumePercent = 100;       // Serialized to view in inspector
+
+    // Establish singleton game state that persists between scenes and reloads    
     private void SetUpSingleton()
     {
         int numGameStates = FindObjectsOfType<GameState>().Length;
@@ -27,19 +31,50 @@ public class GameState : MonoBehaviour
         }
     }
 
+    public void SetVolume(float v)
+    {
+        volumePercent = v;
+    }
+
+    public void resetLevelTime()
+    {
+        levelTime = 0;
+    }
+
+    public void PrintPlaythroughTime()
+    {
+        Debug.Log("Playthrough time: " + playthroughTime);
+        Debug.Log("Level time: " + levelTime);
+    }
+
     void Awake()
     {
         SetUpSingleton();    
     }
 
+    private void Update()
+    {
+        playthroughTime += Time.deltaTime;
+        levelTime += Time.deltaTime;
+    }
+
     public void PlayerDeath()
     {
+        LevelCanvas levelCanvas = FindObjectOfType<LevelCanvas>();
+        
         lives--;
+        levelCanvas.UpdateLives();
+
         if (lives <= 0)
         {
             startingLives++;
+            
             /* TEMP */
             Debug.Log("Ran Out Of Lives");
+            ResetLives();
+            FindObjectOfType<SceneLoader>().ReloadScene();
+            /**/
+                        
             //FindObjectOfType<SceneLoader>().LoadGameOver();            
         }
         else {

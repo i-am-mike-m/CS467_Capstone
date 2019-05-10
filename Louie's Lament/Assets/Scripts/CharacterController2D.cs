@@ -3,27 +3,25 @@ using UnityEngine.Events;
 
 public class CharacterController2D : MonoBehaviour
 {
-    [Header("Character Movement Values")]
+    [Header("Movement Values")]
     [SerializeField] float runSpeed = 30f;                                              // Base movement speed
     [SerializeField] private float jumpForce = 500f;                                    // Force added when the player jumps.
     [Range(0, 1)] [SerializeField] private float crouchingMoveSpeedPercent = 0.5f;      // Movement speed when crouching (percent)
     [Range(0, .3f)] [SerializeField] private float movementSmoothingFactor = .05f;      // How much to smooth out the movement
     [SerializeField] private bool airControlEnabled = true;                             // Whether or not a player can steer while jumping
 
-    [Header("Character Position Checks")]
-    [SerializeField] private LayerMask defineGround;                                    // Layer mask for valid ground check radius targets
-    [SerializeField] private Transform groundCheckLocation;                                     // Position marking where to check if the player is grounded
-    [SerializeField] private Transform ceilingCheckLocation;                                    // Position marking where to check for ceilings
-    [SerializeField] private Collider2D crouchingDisabledCollider;                      // Collider that is disabled when crouching
+    [Header("Position Checks")]
+    [SerializeField] private LayerMask defineGround = 0;                                    // Layer mask for valid ground check radius targets
+    [SerializeField] private Transform groundCheckLocation = null;                      // Position marking where to check if the player is grounded
+    [SerializeField] private Transform ceilingCheckLocation = null;                     // Position marking where to check for ceilings
+    [SerializeField] private Collider2D crouchingDisabledCollider = null;               // Collider that is disabled when crouching
+    [SerializeField] private Collider2D playerAttackCollider = null;                    // Collider enabled when attacking.
 
     [Header("Imroved Jump Gravity")]
     [SerializeField] private float fallingGravityMultiplier = 2.5f;                     // Multiplier to increase gravity while falling
     [SerializeField] private float jumpKeyReleasedMultiplier = 2f;                      // Multiplier to increase gravity when jump key released during upward motion
 
-    const float groundCheckRadius = .2f;        // Radius of the overlap circle to determine if grounded
-    const float ceilingCheckRadius = .2f;       // Radius of the overlap circle to determine able to stop crouching
-
-    /* Initial position / velocity definition */
+    /* Position and Velocity Initialization */
     private Rigidbody2D rigidBody;
     private Animator animator;
     private Vector3 velocity = Vector3.zero;
@@ -34,49 +32,36 @@ public class CharacterController2D : MonoBehaviour
     private bool isGrounded = true;    
     private bool characterModelFacingRight = true;
     private bool previouslyCrouching = false;
-
-    [Header("Events")]
-    [Space]
-
-    public UnityEvent OnLandEvent;
-
-    [System.Serializable]
-    public class BoolEvent : UnityEvent<bool> { }
-
-    public BoolEvent OnCrouchEvent;
-    
+    const float groundCheckRadius = .2f;                                                // Radius of the overlap circle to determine if grounded
+    const float ceilingCheckRadius = .2f;                                               // Radius of the overlap circle to determine able to stop crouching
 
     private void Awake()
     {
         rigidBody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-
-        if (OnLandEvent == null)
-            OnLandEvent = new UnityEvent();
-
-        if (OnCrouchEvent == null)
-            OnCrouchEvent = new BoolEvent();
+        playerAttackCollider.enabled = false;
     }
 
     private void FixedUpdate()
     {
         Move();
         jumpKeyPressed = false;
-        bool wasGrounded = isGrounded;
         isGrounded = false;
                 
         Collider2D[] collidersInGroundCheckRadius = Physics2D.OverlapCircleAll(groundCheckLocation.position, groundCheckRadius, defineGround);
         for (int i = 0; i < collidersInGroundCheckRadius.Length; i++)
         {
+            // Check whether player has landed
             if (collidersInGroundCheckRadius[i].gameObject != gameObject)
             {
-                isGrounded = true;
-                // Reset jumpKeyReleased upon landing from a jump.                
-                jumpKeyReleased = false;
-                if (!wasGrounded)
-                    OnLandEvent.Invoke();
+                if (collidersInGroundCheckRadius[i].gameObject.name != "Background")
+                {                    
+                    isGrounded = true;
+                    jumpKeyReleased = false;
+                    break;
+                }
             }
-        }
+        }        
     }
 
     private void Update()
@@ -87,6 +72,8 @@ public class CharacterController2D : MonoBehaviour
         else if (rigidBody.velocity.y == 0) animator.SetBool("Jumping", false);
 
         currentSpeed = Input.GetAxisRaw("Horizontal") * runSpeed;
+
+        // Check for player inputs and update state variables
         if (Input.GetButtonDown("Jump"))
         {
             jumpKeyPressed = true;
@@ -105,15 +92,16 @@ public class CharacterController2D : MonoBehaviour
             isCrouching = false;
             animator.SetBool("Crouching", false);
         }
-        if (Input.GetButtonDown("Fire1"))
+        if (isGrounded && Input.GetButtonDown("Fire1"))
         {
             animator.SetBool("Attacking", true);
+            playerAttackCollider.enabled = true;
         }
         if (Input.GetButtonUp("Fire1"))
         {
             animator.SetBool("Attacking", false);
+            playerAttackCollider.enabled = false;
         }
-
     }
 
 
@@ -138,7 +126,6 @@ public class CharacterController2D : MonoBehaviour
 
                 if (!previouslyCrouching) {
                     previouslyCrouching = true;
-                    OnCrouchEvent.Invoke(true);
                 }
                 
                 // Disable specified crouching collider
@@ -157,7 +144,6 @@ public class CharacterController2D : MonoBehaviour
                 if (previouslyCrouching)
                 {
                     previouslyCrouching = false;
-                    OnCrouchEvent.Invoke(false);
                 }
             }
 
