@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8056208545785796531}
   - component: {fileID: 8056208545785796528}
   - component: {fileID: 8056208545785796529}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Slime
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!60 &8056208545785796528
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -164,9 +164,11 @@ MonoBehaviour:
     m_Bits: 256
   groundCheckLocation: {fileID: 8056208546956051596}
   aggroRadius: 10
-  character: {fileID: 0}
+  player: {fileID: 0}
   playerAttack: {fileID: 0}
-  isGrounded: 1
+  slimeBurstPrefab: {fileID: 1257128783954966995, guid: c96feab62d7b7dc47b016ff9a5612707,
+    type: 3}
+  slimeBurstCount: 15
 --- !u!1 &8056208546956051597
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,7 +178,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8056208546956051596}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}

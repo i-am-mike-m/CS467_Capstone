@@ -6,6 +6,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {   
     [SerializeField] GameState gameState;
+    [SerializeField] Sprite deadSprite;
 
     bool isAlive = true;
 
@@ -23,17 +24,7 @@ public class Player : MonoBehaviour
     {
         gameState = FindObjectOfType<GameState>();        
     }
-        
-    void Update()
-    {
-        
-    }
-
-    private void FixedUpdate()
-    {
-   
-    }
-
+    
     public void PlayerDeath()
     {
         if (isAlive)
@@ -47,15 +38,15 @@ public class Player : MonoBehaviour
         //FindObjectOfType<SceneLoader>().LoadGameOver();
     }
     
-    IEnumerator Die()
+    public bool GetIsAlive()
     {
-        Collider2D[] playerColliders = GetComponents<Collider2D>();
-        for (int i = 0; i < playerColliders.Length; i++) {
-            playerColliders[i].enabled = false;            
-        }        
+        return isAlive;
+    }
 
-        gameState.PlayerDeath();
-        yield return new WaitForSeconds(3);
-        Destroy(gameObject);
+    IEnumerator Die()
+    {   
+        Destroy(gameObject.GetComponent<Rigidbody2D>());
+        yield return new WaitForSeconds(1.25f);
+        gameState.PlayerDeath();                
     }
 }

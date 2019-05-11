@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,6 +19,8 @@ public class Slime : MonoBehaviour
 
     [SerializeField] private Player player = null;
     [SerializeField] private BoxCollider2D playerAttack = null;
+    [SerializeField] GameObject slimeBurstPrefab;
+    [SerializeField] private int slimeBurstCount = 15;
 
     /* Position and Velocity Initialization */
     private Rigidbody2D rigidBody;
@@ -25,7 +28,7 @@ public class Slime : MonoBehaviour
     private Vector3 velocity = Vector3.zero;
     float currentSpeed = 0f;
     const float groundCheckRadius = .2f;
-    [SerializeField] private bool isGrounded = true;
+    private bool isGrounded = true;
     private bool timeToJump = false;
     private bool characterModelFacingRight = false;
     private float jumpTimer = 0f;
@@ -114,11 +117,28 @@ public class Slime : MonoBehaviour
     {
         if (collision.collider == playerAttack)
         {
+            Burst();
             Destroy(gameObject);
         }
         else if (collision.gameObject.name == "Character")
         {
             player.PlayerDeath();
+        }
+    }
+
+    private void Burst()
+    {
+        for (int i = 0; i < slimeBurstCount; i++)
+        {
+            GameObject burst = Instantiate(slimeBurstPrefab, transform.position, Quaternion.identity) as GameObject;
+
+            System.Random random = new System.Random(i);
+            int x = random.Next(-300, 300);
+            if (x < 100 && x > -100) x *= 2;
+            int y = random.Next(0, 400);
+            if (y < 100) y *= 2;
+
+            burst.GetComponent<Rigidbody2D>().AddForce(new Vector2(x, y));
         }
     }
 

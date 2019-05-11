@@ -25,11 +25,13 @@ public class CharacterController2D : MonoBehaviour
     private Rigidbody2D rigidBody;
     private Animator animator;
     private Vector3 velocity = Vector3.zero;
+    private Player player;
     float currentSpeed = 0f;
     bool jumpKeyPressed = false;
     bool jumpKeyReleased = false;
     bool isCrouching = false;
-    private bool isGrounded = true;    
+    bool crouchKeyReleased = true;    
+    private bool isGrounded = true;
     private bool characterModelFacingRight = true;
     private bool previouslyCrouching = false;
     const float groundCheckRadius = .2f;                                                // Radius of the overlap circle to determine if grounded
@@ -37,6 +39,7 @@ public class CharacterController2D : MonoBehaviour
 
     private void Awake()
     {
+        player = FindObjectOfType<Player>();
         rigidBody = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         playerAttackCollider.enabled = false;
@@ -44,6 +47,7 @@ public class CharacterController2D : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!player.GetIsAlive()) return;
         Move();
         jumpKeyPressed = false;
         isGrounded = false;
@@ -66,17 +70,18 @@ public class CharacterController2D : MonoBehaviour
 
     private void Update()
     {
+        if (!player.GetIsAlive()) return;
         animator.SetFloat("Move Speed", Mathf.Abs(currentSpeed));
 
         if (rigidBody.velocity.y > 0) animator.SetBool("Jumping", true);
         else if (rigidBody.velocity.y == 0) animator.SetBool("Jumping", false);
-
+        
         currentSpeed = Input.GetAxisRaw("Horizontal") * runSpeed;
 
         // Check for player inputs and update state variables
         if (Input.GetButtonDown("Jump"))
         {
-            jumpKeyPressed = true;
+            if (!isCrouching) jumpKeyPressed = true;
         }
         if (Input.GetButtonUp("Jump"))
         {            
@@ -85,12 +90,12 @@ public class CharacterController2D : MonoBehaviour
         if (Input.GetButtonDown("Crouch"))
         {
             isCrouching = true;
+            crouchKeyReleased = false;
             animator.SetBool("Crouching", true);
         }
         if (Input.GetButtonUp("Crouch"))
         {
-            isCrouching = false;
-            animator.SetBool("Crouching", false);
+            crouchKeyReleased = true;            
         }
         if (isGrounded && Input.GetButtonDown("Fire1"))
         {
@@ -106,15 +111,29 @@ public class CharacterController2D : MonoBehaviour
 
 
     public void Move()
-    {
+    {        
         float moveSpeed = currentSpeed * Time.fixedDeltaTime;
         
-        if (isCrouching)
+        if (isCrouching && crouchKeyReleased)
         {
-            // Check radius around ceiling check for obstructions to standing up from crouching
-            if (Physics2D.OverlapCircle(ceilingCheckLocation.position, ceilingCheckRadius, defineGround))
-            {
-                isCrouching = true;
+            isCrouching = false;
+
+            Collider2D[] collidersInCeilingCheckRadius = Physics2D.OverlapCircleAll(ceilingCheckLocation.position, ceilingCheckRadius, defineGround);
+            for (int i = 0; i < collidersInCeilingCheckRadius.Length; i++)
+            {                
+                // Check whether player can stand
+                if (collidersInCeilingCheckRadius[i].gameObject != gameObject)
+                {
+                    if (collidersInCeilingCheckRadius[i].gameObject.name != "Background")
+                    {
+                        isCrouching = true;
+                    }
+                }
+            }
+
+            if (!isCrouching)
+            {                
+                animator.SetBool("Crouching", false);
             }
         }
                 
