@@ -7,13 +7,17 @@ public class TrickElevatorMovement : MonoBehaviour
     private GameObject[] groundPieces;
     private GameObject elevatorContainer;
     private GameObject player;
+    private GameObject spikesContainer;
     private BoxCollider2D elevatorBoundingBox;
     private float minHeight;
     private float midHeight;
     private float maxHeight;
     private float delayTimer;
+    private float spikeExtendTimer;
     private bool spikesTriggered = false;
+    private bool spikesExtended = false;
     private bool waitForNow = false;
+    private bool trapLoaded = true;
 
     // Start is called before the first frame update
     void Start()
@@ -21,11 +25,13 @@ public class TrickElevatorMovement : MonoBehaviour
         minHeight = GameObject.Find("TrickElevator1_BottomHeightMarker").transform.position.y;
         midHeight = GameObject.Find("TrickElevator1_MidHeightMarker").transform.position.y;
         maxHeight = GameObject.Find("TrickElevator1_TopHeightMarker").transform.position.y;
+        spikesContainer = GameObject.Find("Elevator Spikes Container");
 
         elevatorBoundingBox = gameObject.GetComponent<BoxCollider2D>();
         player = GameObject.Find("Character");
 
-        delayTimer = 1.8f;
+        delayTimer = 0.82f;
+        spikeExtendTimer = 0.3f;
 
         avoidGroundCollisions();
     }
@@ -50,21 +56,70 @@ public class TrickElevatorMovement : MonoBehaviour
             if (playerOnElevator() && !elevatorAtDestination() && !waitingOnTrap())
             {
                 raiseElevator();
+
+                if (elevatorPassedMidpoint() && trapIsLoaded()) {
+                    setTrapInMotion();
+                }
+
             }
             else if (waitingOnTrap())
             {
                 decayDelayTimer();
 
-                if (timerExpired())
+                if (timerExpired() && !spikesExtended)
                 {
-                    GameObject.Find("Elevator Spikes Container").transform.Translate(Vector3.up * 4 * Time.deltaTime);
+                    extendSpikes();
+                }
+                else if (timerExpired() && spikesExtended)
+                {
+                    retractSpikes();
+
+                    if (spikesContainer.GetComponent<BoxCollider2D>().bounds.min.y <= elevatorBoundingBox.bounds.min.y + 0.1)
+                    {
+                        waitForNow = false;
+                    }
                 }
             }
             else if (!playerOnElevator() && !elevatorAtBase())
             {
                 lowerElevator();
+
+                if (elevatorBelowMidpoint())
+                {
+                    resetTrap();
+                }
             }
         }
+    }
+
+    private void extendSpikes()
+    {
+        if (!spikesExtended && spikesContainer.GetComponent<BoxCollider2D>().bounds.min.y < elevatorBoundingBox.bounds.max.y)
+        {
+            spikesContainer.transform.Translate(Vector3.up * 4 * Time.deltaTime);
+        }
+        else if (spikesContainer.GetComponent<BoxCollider2D>().bounds.min.y >= elevatorBoundingBox.bounds.max.y)
+        {
+            spikesExtended = true;
+        }
+    }
+
+    private void retractSpikes()
+    {
+        if (spikesContainer.GetComponent<BoxCollider2D>().bounds.min.y > elevatorBoundingBox.bounds.min.y + 0.1)
+        {
+            spikesContainer.transform.Translate(Vector3.down * 4 * Time.deltaTime);
+        }
+    }
+
+    private bool trapIsLoaded()
+    {
+        return trapLoaded;
+    }
+
+    private void raiseElevator()
+    {
+        gameObject.transform.Translate(Vector3.up * 2 * Time.deltaTime);
     }
 
     private bool playerOnElevator()
@@ -82,7 +137,7 @@ public class TrickElevatorMovement : MonoBehaviour
     {
         float top = elevatorBoundingBox.bounds.center.y + (elevatorBoundingBox.size.y / 2);
 
-        return !(top < maxHeight) && waitingOnTrap();
+        return top >= maxHeight;
     }
 
     private bool waitingOnTrap()
@@ -90,20 +145,18 @@ public class TrickElevatorMovement : MonoBehaviour
         return waitForNow;
     }
 
-    private void raiseElevator()
-    {
-        gameObject.transform.Translate(Vector3.up * 2 * Time.deltaTime);
-
-        if (elevatorPassedMidpoint()) {
-            setTrapInMotion();
-        }
-    }
-
     private bool elevatorPassedMidpoint()
     {
         float top = elevatorBoundingBox.bounds.center.y + (elevatorBoundingBox.size.y / 2);
 
-        return (top > midHeight + 1) && !waitingOnTrap();
+        return (top > midHeight) && !waitingOnTrap();
+    }
+
+    private bool elevatorBelowMidpoint()
+    {
+        float top = elevatorBoundingBox.bounds.center.y + (elevatorBoundingBox.size.y / 2);
+
+        return top < midHeight;
     }
 
     private bool elevatorAtBase()
@@ -117,6 +170,7 @@ public class TrickElevatorMovement : MonoBehaviour
     {
         waitForNow = true;
         spikesTriggered = true;
+        trapLoaded = false;
     }
 
     private void lowerElevator()
@@ -126,9 +180,12 @@ public class TrickElevatorMovement : MonoBehaviour
 
     private void resetTrap()
     {
-        delayTimer = 1.8f;
+        delayTimer = 0.82f;
+        spikeExtendTimer = 0.3f;
         waitForNow = false;
+        spikesExtended = false;
         spikesTriggered = false;
+        trapLoaded = true;
     }
 
     private void decayDelayTimer()
