@@ -32,7 +32,10 @@ public class FloorDropProximity : MonoBehaviour
         trapPieces = GameObject.FindGameObjectsWithTag("Trap Section");
         foreach (GameObject obj in trapPieces)
         {
-            Physics2D.IgnoreCollision(gameObject.GetComponent<BoxCollider2D>(), obj.GetComponent<BoxCollider2D>());
+            if (gameObject.GetComponent<BoxCollider2D>() != null && obj.GetComponent<BoxCollider2D>() != null)
+            {
+                Physics2D.IgnoreCollision(gameObject.GetComponent<BoxCollider2D>(), obj.GetComponent<BoxCollider2D>());
+            }
         }
 
 

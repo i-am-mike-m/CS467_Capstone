@@ -56,11 +56,12 @@ public class SpikeFallBehavior : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!hasRespawnTriggered())
+        if (!hasRespawnTriggered() && collision.gameObject.tag == "Ground")
         {
             gameObject.transform.position = originalLocation;
             setRespawnHasTriggered();
         }
+
         if (collision.gameObject.name == "Character")
         {
             FindObjectOfType<Player>().PlayerDeath();
