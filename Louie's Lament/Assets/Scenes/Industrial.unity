@@ -16340,7 +16340,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.00000011920929}
   serializedVersion: 2
-  m_Radius: 0.45366535
+  m_Radius: 0.41739738
 --- !u!224 &2041310594 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1144618147248446771, guid: 0c232e43b069f494182131794ef83d18,
