@@ -3,12 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.Audio;
+using UnityEngine.UI;
 
 public class SettingsMenu : MonoBehaviour
 {
     [SerializeField] GameState state;
     [SerializeField] TextMeshProUGUI volumePercentText;
     [SerializeField] AudioMixer audioMixer;
+    [SerializeField] Slider slider;
+    
+
+    private void Awake()
+    {
+        float decibels;        
+        audioMixer.GetFloat("volume", out decibels);
+        slider.value = (decibels + 40) * 2.5f;
+
+        int volumeInt = (int)slider.value;
+        volumePercentText.text = volumeInt.ToString() + " %";
+    }
 
     public void SetVolume (float sliderVolume)
     {

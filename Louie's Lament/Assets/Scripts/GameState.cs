@@ -55,7 +55,8 @@ public class GameState : MonoBehaviour
 
     private void Update()
     {
-        if (SceneManager.GetActiveScene().buildIndex > 0) { 
+        Scene currentScene = SceneManager.GetActiveScene();        
+        if (currentScene.buildIndex != 0 && currentScene.name != "Game Over") { 
             playthroughTime += Time.deltaTime;
             levelTime += Time.deltaTime;
         }

@@ -41,12 +41,16 @@ public class SceneLoader : MonoBehaviour
         Application.Quit();
     }
 
+    public void ContinueGame()
+    {
+        SceneManager.LoadScene(1);
+    }
+
     IEnumerator GameOver()
     {
-        yield return new WaitForSeconds(1.5f);
-        //SceneManager.LoadScene("Game Over");
+        yield return new WaitForSeconds(1.5f);        
         gameState.ResetPlaythroughTime();
-        SceneManager.LoadScene(0); // TEMPORARY UNTIL WE MAKE GAME OVER
+        SceneManager.LoadScene("Game Over");        
     }
 
     private IEnumerator LoadAfterTimer(int index)

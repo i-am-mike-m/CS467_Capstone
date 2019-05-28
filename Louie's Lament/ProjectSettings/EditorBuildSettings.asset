@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Ice.unity
     guid: 863d95e6a8848d348a2f40330c1ab56a
+  - enabled: 1
+    path: Assets/Scenes/Game Over.unity
+    guid: 44eebf150e07b1142b3dd4e7e1e55495
   m_configObjects: {}
