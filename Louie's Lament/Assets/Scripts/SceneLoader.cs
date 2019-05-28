@@ -5,24 +5,34 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
+    GameState gameState;
+
+    private void Start()
+    {
+        gameState = FindObjectOfType<GameState>();
+    }
+
     public void LoadStartMenu()
     {
-        FindObjectOfType<GameState>().ResetLives();
+        gameState.ResetLives();
         StartCoroutine(LoadAfterTimer(0));
     }
 
     public void LoadNextLevel()
     {
+        gameState.resetLevelTime();
         StartCoroutine(LoadAfterTimer(SceneManager.GetActiveScene().buildIndex + 1));
     }
 
     public void LoadGameOver()
     {
+        gameState.resetLevelTime();
         StartCoroutine(GameOver());
     }
 
     public void ReloadScene()
     {
+        gameState.resetLevelTime();
         StartCoroutine(LoadAfterTimer(SceneManager.GetActiveScene().buildIndex));
     }
 
@@ -34,7 +44,8 @@ public class SceneLoader : MonoBehaviour
     IEnumerator GameOver()
     {
         yield return new WaitForSeconds(1.5f);
-        SceneManager.LoadScene("Game Over");
+        //SceneManager.LoadScene("Game Over");
+        SceneManager.LoadScene(0); // TEMPORARY UNTIL WE MAKE GAME OVER
     }
 
     private IEnumerator LoadAfterTimer(int index)

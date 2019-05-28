@@ -23,4 +23,9 @@ public class SettingsMenu : MonoBehaviour
     {
         Screen.fullScreen = fs;
     }
+
+    public void ToggleGraderMode ()
+    {
+        state.toggleGraderMode();
+    }
 }

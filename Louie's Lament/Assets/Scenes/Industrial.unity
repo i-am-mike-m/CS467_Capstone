@@ -217,7 +217,7 @@ GameObject:
   - component: {fileID: 57291314}
   - component: {fileID: 57291313}
   - component: {fileID: 57291312}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Late Barrel (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -441,7 +441,7 @@ GameObject:
   m_Component:
   - component: {fileID: 78630557}
   - component: {fileID: 78630558}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: New Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -868,7 +868,8 @@ GameObject:
   m_Component:
   - component: {fileID: 202772682}
   - component: {fileID: 202772683}
-  m_Layer: 0
+  - component: {fileID: 202772684}
+  m_Layer: 9
   m_Name: Brutal Non Drop Spikes
   m_TagString: Trap Section
   m_Icon: {fileID: 0}
@@ -921,6 +922,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.2448578, y: 0.42988396}
   m_EdgeRadius: 0
+--- !u!114 &202772684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 202772681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fc6cd53bed1c1c4b8066cc5bac58607, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &210617309
 GameObject:
   m_ObjectHideFlags: 0
@@ -966,7 +979,7 @@ GameObject:
   m_Component:
   - component: {fileID: 236759694}
   - component: {fileID: 236759695}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: New Sprite (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1183,7 +1196,7 @@ GameObject:
   m_Component:
   - component: {fileID: 256894511}
   - component: {fileID: 256894512}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: New Sprite (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1271,7 +1284,7 @@ GameObject:
   - component: {fileID: 262255525}
   - component: {fileID: 262255524}
   - component: {fileID: 262255523}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Late Barrel (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1635,7 +1648,7 @@ GameObject:
   - component: {fileID: 345822425}
   - component: {fileID: 345822424}
   - component: {fileID: 345822423}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Late Barrel (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2157,7 +2170,7 @@ GameObject:
   - component: {fileID: 496515228}
   - component: {fileID: 496515227}
   - component: {fileID: 496515225}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Barrel 3 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2552,7 +2565,7 @@ GameObject:
   m_Component:
   - component: {fileID: 566134498}
   - component: {fileID: 566134499}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: New Sprite (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2805,7 +2818,7 @@ GameObject:
   - component: {fileID: 631372046}
   - component: {fileID: 631372045}
   - component: {fileID: 631372044}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Late Barrel (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2951,7 +2964,7 @@ GameObject:
   - component: {fileID: 638634773}
   - component: {fileID: 638634772}
   - component: {fileID: 638634771}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Late Barrel (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3350,6 +3363,26 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -5125397840224684376, guid: f38beb69238a45d459d41186087201d2,
         type: 3}
+    - target: {fileID: 7957773189078321110, guid: d4ed6f8c54e41734abd6307ea2fcfd06,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7957773189078321110, guid: d4ed6f8c54e41734abd6307ea2fcfd06,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 2.8796291
+      objectReference: {fileID: 0}
+    - target: {fileID: 7957773189078321110, guid: d4ed6f8c54e41734abd6307ea2fcfd06,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: -1.0077754
+      objectReference: {fileID: 0}
+    - target: {fileID: 7957773189078321110, guid: d4ed6f8c54e41734abd6307ea2fcfd06,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 2.9844491
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4ed6f8c54e41734abd6307ea2fcfd06, type: 3}
 --- !u!1 &667482701
@@ -3423,7 +3456,7 @@ GameObject:
   m_Component:
   - component: {fileID: 681955044}
   - component: {fileID: 681955045}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: New Sprite (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3570,7 +3603,7 @@ GameObject:
   m_Component:
   - component: {fileID: 693293799}
   - component: {fileID: 693293800}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: New Sprite (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3993,7 +4026,7 @@ GameObject:
   m_Component:
   - component: {fileID: 763770318}
   - component: {fileID: 763770319}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: New Sprite (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4165,7 +4198,7 @@ GameObject:
   m_Component:
   - component: {fileID: 787274990}
   - component: {fileID: 787274991}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: New Sprite (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4584,7 +4617,7 @@ GameObject:
   - component: {fileID: 865137122}
   - component: {fileID: 865137121}
   - component: {fileID: 865137120}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Late Barrel (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4897,7 +4930,7 @@ GameObject:
   - component: {fileID: 922842664}
   - component: {fileID: 922842663}
   - component: {fileID: 922842662}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Late Barrel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5164,7 +5197,7 @@ GameObject:
   m_Component:
   - component: {fileID: 936528144}
   - component: {fileID: 936528145}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: New Sprite (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5389,7 +5422,7 @@ GameObject:
   - component: {fileID: 946112436}
   - component: {fileID: 946112437}
   - component: {fileID: 946112438}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Barrel 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6061,7 +6094,7 @@ GameObject:
   - component: {fileID: 1078675295}
   - component: {fileID: 1078675296}
   - component: {fileID: 1078675297}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Barrel 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6205,7 +6238,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1084422763}
   - component: {fileID: 1084422764}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: New Sprite (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6293,7 +6326,7 @@ GameObject:
   - component: {fileID: 1130163510}
   - component: {fileID: 1130163509}
   - component: {fileID: 1130163508}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Barrel 2 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6437,7 +6470,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1159809657}
   - component: {fileID: 1159809658}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: New Sprite (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6520,7 +6553,7 @@ GameObject:
   - component: {fileID: 1162281202}
   - component: {fileID: 1162281201}
   - component: {fileID: 1162281200}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Late Barrel (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6905,7 +6938,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1223131116}
   - component: {fileID: 1223131117}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: New Sprite (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7074,7 +7107,7 @@ GameObject:
   - component: {fileID: 1233450545}
   - component: {fileID: 1233450547}
   - component: {fileID: 1233450546}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Barrel 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7361,63 +7394,6 @@ Transform:
   m_Father: {fileID: 758122407}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1275469241
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1275469242}
-  - component: {fileID: 1275469243}
-  m_Layer: 0
-  m_Name: BaseGroundColliderMid
-  m_TagString: Ground
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1275469242
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1275469241}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -20, y: -4.94, z: -20}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2142672847}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &1275469243
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1275469241}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 19.055784, y: 0.7142296}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 24.979618, y: 2.4284592}
-  m_EdgeRadius: 0
 --- !u!1 &1275662920
 GameObject:
   m_ObjectHideFlags: 0
@@ -7428,7 +7404,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1275662921}
   - component: {fileID: 1275662922}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: New Sprite (11)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7516,7 +7492,7 @@ GameObject:
   - component: {fileID: 1300921003}
   - component: {fileID: 1300921004}
   - component: {fileID: 1300921005}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Barrel 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7740,7 +7716,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1313324095}
   - component: {fileID: 1313324096}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: New Sprite (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7865,7 +7841,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1409572991}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Barrel Dropper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8089,7 +8065,7 @@ GameObject:
   - component: {fileID: 1488211928}
   - component: {fileID: 1488211927}
   - component: {fileID: 1488211926}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Late Barrel (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8222,6 +8198,63 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1501189338
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1501189339}
+  - component: {fileID: 1501189340}
+  m_Layer: 0
+  m_Name: BaseGroundColliderRight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1501189339
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1501189338}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 27.22, y: -3.43, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2142672847}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1501189340
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1501189338}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 2.5754662, y: -1.0022602}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 30.319923, y: 3.0045204}
+  m_EdgeRadius: 0
 --- !u!1 &1510282564
 GameObject:
   m_ObjectHideFlags: 0
@@ -8232,7 +8265,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1510282565}
   - component: {fileID: 1510282566}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: New Sprite (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8318,7 +8351,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1532576335}
   - component: {fileID: 1532576336}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: New Sprite (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9188,7 +9221,7 @@ GameObject:
   - component: {fileID: 1614431248}
   - component: {fileID: 1614431247}
   - component: {fileID: 1614431246}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Barrel 1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12405,7 +12438,7 @@ GameObject:
   - component: {fileID: 1732437216}
   - component: {fileID: 1732437217}
   - component: {fileID: 1732437218}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Barrel 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13034,7 +13067,7 @@ GameObject:
   - component: {fileID: 1787960547}
   - component: {fileID: 1787960548}
   - component: {fileID: 1787960549}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Barrel 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13263,7 +13296,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1801061523}
   - component: {fileID: 1801061524}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: New Sprite (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13353,7 +13386,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1839901306}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Barrel Dropper 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13488,7 +13521,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1845823657}
   - component: {fileID: 1845823658}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: New Sprite (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15799,7 +15832,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1979399065}
   - component: {fileID: 1979399066}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: New Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15903,7 +15936,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2142672847}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &1980246107
 BoxCollider2D:
@@ -15972,7 +16005,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2142672847}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -16154,7 +16187,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2018606781}
   - component: {fileID: 2018606782}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: New Sprite (10)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16502,7 +16535,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2059257389}
   - component: {fileID: 2059257390}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: New Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16716,63 +16749,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d6084be4e9c41234a99e14f644786edb, type: 3}
---- !u!1 &2070304934
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2070304935}
-  - component: {fileID: 2070304936}
-  m_Layer: 0
-  m_Name: BaseGroundColliderRight
-  m_TagString: Ground
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2070304935
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2070304934}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -20, y: -4.94, z: -20}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2142672847}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &2070304936
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2070304934}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 50.141167, y: 0.7142296}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 31.110336, y: 2.4284592}
-  m_EdgeRadius: 0
 --- !u!1 &2071275901
 GameObject:
   m_ObjectHideFlags: 0
@@ -16925,7 +16901,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2073324145}
   - component: {fileID: 2073324146}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: New Sprite (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17000,6 +16976,63 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &2076543206
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2076543207}
+  - component: {fileID: 2076543208}
+  m_Layer: 0
+  m_Name: BaseGroundColliderMid
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2076543207
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2076543206}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.73, y: -3.46, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2142672847}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &2076543208
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2076543206}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.16110134, y: -0.9887152}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 24.846788, y: 2.9774303}
+  m_EdgeRadius: 0
 --- !u!1 &2079257387
 GameObject:
   m_ObjectHideFlags: 0
@@ -17378,10 +17411,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1543023931}
-  - {fileID: 1275469242}
-  - {fileID: 2070304935}
   - {fileID: 1980246106}
   - {fileID: 2005428121}
+  - {fileID: 1501189339}
+  - {fileID: 2076543207}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -17728,21 +17761,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Character
       objectReference: {fileID: 0}
-    - target: {fileID: 4816582097701316741, guid: 97c7410a2385a7c47b4f300e2e4eb756,
-        type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 4816582097701316741, guid: 97c7410a2385a7c47b4f300e2e4eb756,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4816582097701316763, guid: 97c7410a2385a7c47b4f300e2e4eb756,
-        type: 3}
-      propertyPath: gameState
-      value: 
-      objectReference: {fileID: 854223421}
     - target: {fileID: 4816582097701316760, guid: 97c7410a2385a7c47b4f300e2e4eb756,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -17798,16 +17816,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4816582097701316740, guid: 97c7410a2385a7c47b4f300e2e4eb756,
+    - target: {fileID: 4816582097701316763, guid: 97c7410a2385a7c47b4f300e2e4eb756,
         type: 3}
-      propertyPath: defineGround.m_Bits
-      value: 55
-      objectReference: {fileID: 0}
-    - target: {fileID: 4816582097701316742, guid: 97c7410a2385a7c47b4f300e2e4eb756,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 5
-      objectReference: {fileID: 0}
+      propertyPath: gameState
+      value: 
+      objectReference: {fileID: 854223421}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97c7410a2385a7c47b4f300e2e4eb756, type: 3}
 --- !u!1001 &5828757109330388797

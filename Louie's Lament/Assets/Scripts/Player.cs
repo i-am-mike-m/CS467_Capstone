@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
 {   
     [SerializeField] GameState gameState;
     [SerializeField] Sprite deadSprite;
+    [SerializeField] Animator animator;
 
     bool isAlive = true;
 
@@ -19,10 +20,15 @@ public class Player : MonoBehaviour
     [SerializeField] [Range(0f, 1f)] float fireSFXVolume = 0.05f;
     */
 
+    private void Awake()
+    {
+        animator.SetBool("Alive", true);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        gameState = FindObjectOfType<GameState>();        
+        gameState = FindObjectOfType<GameState>();
     }
     
     public void PlayerDeath()
@@ -30,6 +36,7 @@ public class Player : MonoBehaviour
         if (isAlive)
         {
             isAlive = false;
+            animator.SetBool("Alive", false);
             StartCoroutine(Die());
         }
         

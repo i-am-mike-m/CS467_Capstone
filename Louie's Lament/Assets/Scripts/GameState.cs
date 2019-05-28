@@ -14,8 +14,9 @@ public class GameState : MonoBehaviour
     [SerializeField] private float playthroughTime = 0;     // Serialized to view in inspector
     [SerializeField] private float levelTime = 0;           // Serialized to view in inspector
 
-    [Header("Settings")]
+    [Header("Settings")]    
     [SerializeField] private float volumePercent = 100;       // Serialized to view in inspector
+    [SerializeField] private bool graderModeEnabled = true;
 
     // Establish singleton game state that persists between scenes and reloads    
     private void SetUpSingleton()
@@ -49,7 +50,7 @@ public class GameState : MonoBehaviour
 
     void Awake()
     {
-        SetUpSingleton();    
+        SetUpSingleton();        
     }
 
     private void Update()
@@ -69,13 +70,17 @@ public class GameState : MonoBehaviour
         {
             startingLives++;
             
-            /* TEMP */
-            Debug.Log("Ran Out Of Lives");
-            ResetLives();
-            FindObjectOfType<SceneLoader>().ReloadScene();
-            /**/
-                        
-            //FindObjectOfType<SceneLoader>().LoadGameOver();            
+            if (graderModeEnabled)
+            {
+                Debug.Log("Ran Out Of Lives");
+                ResetLives();
+                FindObjectOfType<SceneLoader>().ReloadScene();
+            }
+            else
+            {
+                ResetLives();
+                FindObjectOfType<SceneLoader>().LoadGameOver();            
+            }
         }
         else {
             FindObjectOfType<SceneLoader>().ReloadScene();
@@ -90,5 +95,20 @@ public class GameState : MonoBehaviour
     public void ResetLives()
     {
         lives = startingLives;
+    }
+
+    public float GetTotalTime()
+    {
+        return playthroughTime;
+    }
+
+    public float GetLevelTime()
+    {
+        return levelTime;
+    }
+
+    public void toggleGraderMode()
+    {
+        graderModeEnabled = !graderModeEnabled;
     }
 }
