@@ -16,7 +16,7 @@ public class GameState : MonoBehaviour
 
     [Header("Settings")]    
     [SerializeField] private float volumePercent = 100;       // Serialized to view in inspector
-    [SerializeField] private bool graderModeEnabled = true;
+    [SerializeField] private bool graderModeEnabled = false;
 
     // Establish singleton game state that persists between scenes and reloads    
     private void SetUpSingleton()
@@ -55,8 +55,10 @@ public class GameState : MonoBehaviour
 
     private void Update()
     {
-        playthroughTime += Time.deltaTime;
-        levelTime += Time.deltaTime;
+        if (SceneManager.GetActiveScene().buildIndex > 0) { 
+            playthroughTime += Time.deltaTime;
+            levelTime += Time.deltaTime;
+        }
     }
 
     public void PlayerDeath()
@@ -78,7 +80,7 @@ public class GameState : MonoBehaviour
             }
             else
             {
-                ResetLives();
+                ResetLives();                
                 FindObjectOfType<SceneLoader>().LoadGameOver();            
             }
         }
@@ -105,6 +107,11 @@ public class GameState : MonoBehaviour
     public float GetLevelTime()
     {
         return levelTime;
+    }
+
+    public void ResetPlaythroughTime()
+    {
+        playthroughTime = 0f;
     }
 
     public void toggleGraderMode()

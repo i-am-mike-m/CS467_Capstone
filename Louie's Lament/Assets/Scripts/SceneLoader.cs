@@ -45,6 +45,7 @@ public class SceneLoader : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
         //SceneManager.LoadScene("Game Over");
+        gameState.ResetPlaythroughTime();
         SceneManager.LoadScene(0); // TEMPORARY UNTIL WE MAKE GAME OVER
     }
 
