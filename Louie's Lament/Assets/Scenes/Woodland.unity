@@ -48720,7 +48720,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2078111017}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Puff Shrooms
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54306,11 +54306,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6462724323744229099, guid: e331c939ece1b05449898336632cd7c3,
-        type: 3}
-      propertyPath: state
-      value: 
-      objectReference: {fileID: 260760101}
     - target: {fileID: 6462724323586850236, guid: e331c939ece1b05449898336632cd7c3,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

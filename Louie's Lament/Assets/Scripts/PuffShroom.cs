@@ -8,11 +8,15 @@ public class PuffShroom : MonoBehaviour
     ParticleSystem particles;
 
     // Start is called before the first frame update
+    private void Awake()
+    {
+        particles = gameObject.GetComponent<ParticleSystem>();
+        particles.Stop();
+    }
+
     void Start()
     {
-        player = FindObjectOfType<Player>();
-        particles = gameObject.GetComponent<ParticleSystem>();
-        particles.Stop();                
+        player = FindObjectOfType<Player>();        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

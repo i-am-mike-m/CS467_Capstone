@@ -6,30 +6,31 @@ using TMPro;
 
 public class GameState : MonoBehaviour
 {
+    public static GameState state;
+
     [Header("Player Info")]
-    [SerializeField] private int startingLives = 5;
-    [SerializeField] private int lives = 5;
-
-    [Header("Time Info")]
-    [SerializeField] private float playthroughTime = 0;     // Serialized to view in inspector
-    [SerializeField] private float levelTime = 0;           // Serialized to view in inspector
-
-    [Header("Settings")]    
-    [SerializeField] private float volumePercent = 100;       // Serialized to view in inspector
-    [SerializeField] private bool graderModeEnabled = false;
+    [SerializeField] private int startingLives = 3;
+    [SerializeField] private int lives = 3;
+        
+    private float playthroughTime = 0;
+    private float levelTime = 0;
+    private float volumePercent;
+    [SerializeField] private bool graderModeEnabled;
 
     // Establish singleton game state that persists between scenes and reloads    
     private void SetUpSingleton()
-    {
+    {        
         int numGameStates = FindObjectsOfType<GameState>().Length;
         if (numGameStates > 1)
         {
-            Destroy(gameObject);
+            Destroy(gameObject);            
         }
         else
         {
-            DontDestroyOnLoad(gameObject);
-        }
+            volumePercent = 100;
+            graderModeEnabled = false;
+            DontDestroyOnLoad(gameObject);            
+        }        
     }
 
     public void SetVolume(float v)
@@ -40,12 +41,6 @@ public class GameState : MonoBehaviour
     public void resetLevelTime()
     {
         levelTime = 0;
-    }
-
-    public void PrintPlaythroughTime()
-    {
-        Debug.Log("Playthrough time: " + playthroughTime);
-        Debug.Log("Level time: " + levelTime);
     }
 
     void Awake()
@@ -74,8 +69,7 @@ public class GameState : MonoBehaviour
             startingLives++;
             
             if (graderModeEnabled)
-            {
-                Debug.Log("Ran Out Of Lives");
+            {                
                 ResetLives();
                 FindObjectOfType<SceneLoader>().ReloadScene();
             }
@@ -115,8 +109,13 @@ public class GameState : MonoBehaviour
         playthroughTime = 0f;
     }
 
-    public void toggleGraderMode()
+    public void ToggleGraderMode()
     {
-        graderModeEnabled = !graderModeEnabled;
+        graderModeEnabled = !graderModeEnabled;        
+    }
+
+    public bool GetGraderModeEnabled()
+    {
+        return graderModeEnabled;
     }
 }

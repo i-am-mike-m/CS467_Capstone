@@ -2764,6 +2764,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1236340346}
+        m_MethodName: UpdateSettings
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &597970846
@@ -2872,7 +2883,7 @@ GameObject:
   - component: {fileID: 617245844}
   - component: {fileID: 617245843}
   m_Layer: 5
-  m_Name: Checkmark
+  m_Name: GraderMode Checkmark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4373,10 +4384,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8140f1d5533dc541b0a12b60397517b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: {fileID: 1389781502}
   volumePercentText: {fileID: 26486543}
   audioMixer: {fileID: 24100000, guid: a68c4c017c74e264e9572f3f97f75589, type: 2}
   slider: {fileID: 222445729}
+  graderModeToggle: {fileID: 1193254480}
+  fullscreenToggle: {fileID: 1175087642}
 --- !u!222 &1236340347
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4397,7 +4409,7 @@ GameObject:
   - component: {fileID: 1361811397}
   - component: {fileID: 1361811396}
   m_Layer: 5
-  m_Name: Checkmark
+  m_Name: Fullscreen Checkmark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4459,18 +4471,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1361811394}
   m_CullTransparentMesh: 0
---- !u!114 &1389781502 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4722507728842452343, guid: 0d8450064934b9947a60960a12461f4b,
-    type: 3}
-  m_PrefabInstance: {fileID: 1485843023}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34a9746e673bda749bd72c5e7266b5b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1402900635
 GameObject:
   m_ObjectHideFlags: 0
@@ -5507,7 +5507,7 @@ GameObject:
   - component: {fileID: 1700328737}
   - component: {fileID: 1700328736}
   m_Layer: 5
-  m_Name: Fullscreen Toggle Text
+  m_Name: Grader Mode Toggle Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5529,7 +5529,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 10.9, y: -0.0000009536743}
+  m_AnchoredPosition: {x: 10.899998, y: -0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1700328736

@@ -25,8 +25,7 @@ public class SceneLoader : MonoBehaviour
     }
 
     public void LoadGameOver()
-    {
-        gameState.resetLevelTime();
+    {        
         StartCoroutine(GameOver());
     }
 
@@ -43,13 +42,14 @@ public class SceneLoader : MonoBehaviour
 
     public void ContinueGame()
     {
-        SceneManager.LoadScene(1);
+        StartCoroutine(LoadAfterTimer(1));
     }
 
     IEnumerator GameOver()
     {
         yield return new WaitForSeconds(1.5f);        
         gameState.ResetPlaythroughTime();
+        gameState.resetLevelTime();
         SceneManager.LoadScene("Game Over");        
     }
 

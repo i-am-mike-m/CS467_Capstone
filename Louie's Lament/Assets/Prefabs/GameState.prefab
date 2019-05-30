@@ -43,8 +43,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34a9746e673bda749bd72c5e7266b5b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingLives: 5
-  lives: 5
-  playthroughTime: 0
-  levelTime: 0
-  volumePercent: 100
+  startingLives: 3
+  lives: 3
